@@ -39,6 +39,19 @@ button svg {
   width: 100%;
 }
 
+/* Mode buttons */
+#studyModeLabel, #breakModeLabel {
+  margin: 10px;
+}
+#studyModeLabel.active {
+  font-weight: bold;
+  background: var(--primary-color);
+}
+#breakModeLabel.active {
+  font-weight: bold;
+  background: var(--secondary-color);
+}
+
 /* INPUTS */
 .inputNumberMinimal {
   width: 60px;

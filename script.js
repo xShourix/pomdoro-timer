@@ -10,7 +10,8 @@ let currentTime = studyTime;
 let interval = null;
 
 // timer display elements
-const modeLabel = document.getElementById("modeLabel");
+const breakModeLabel = document.getElementById("breakModeLabel");
+const studyModeLabel = document.getElementById("studyModeLabel");
 const timerDisplay = document.getElementById("timerNumber");
 const progressCircle = document.getElementById("progressCircle");
 const radius = 90;
@@ -50,10 +51,18 @@ function updateDisplay() {
   seconds = seconds < 10 ? "0" + seconds : seconds;
 
   timerDisplay.textContent = `${minutes}:${seconds}`;
-
-  modeLabel.textContent = mode === "study" ? "Study Time" : "Break Time";
   document.title = `${mode === "study" ? "Study" : "Break"} - ${minutes}:${seconds}`;
   progressCircle.style.stroke = mode === "study" ? studyColor : breakColor;
+
+  // active style toggle
+  if (mode === "study") {
+    studyModeLabel.classList.add("active");
+    breakModeLabel.classList.remove("active");
+  }
+  else {
+    breakModeLabel.classList.add("active");
+    studyModeLabel.classList.remove("active");
+  }
 
   sessionCountEl.textContent = sessionCount;
   sessionGoalEl.textContent = sessionGoal;
@@ -63,6 +72,23 @@ function updateDisplay() {
   progressCircle.style.strokeDashoffset = circumference * (1 - progress);
 }
 
+// mode switch function
+function switchModeTo(modeName) {
+  if (mode === modeName) return; // no change
+  
+  pauseTimer(); // ensure timer is stopped when switching modes
+
+  mode = modeName;
+  if (mode === "study") {
+    totalTime = studyTime;
+    currentTime = studyTime;
+  } else {
+    totalTime = breakTime;
+    currentTime = breakTime;
+  }
+
+  updateDisplay();
+}
 // timer functions
 function startTimer() {
   if (interval) return; // preventing multiple timers
@@ -172,13 +198,9 @@ function saveSessionData() {
 // popup handling
 function closePopup() {
   if (mode === "study") {
-    mode = "break";
-    totalTime = breakTime;
-    currentTime = breakTime;
+    switchModeTo("break");
   } else {
-    mode = "study";
-    totalTime = studyTime;
-    currentTime = studyTime;
+    switchModeTo("study");
   }
   startTimer();
   updateDisplay();

@@ -32,11 +32,13 @@
     <div id="popup" class="popup hidden">
       <div class="popup-content">
         <div id="popupMessage"></div>
-        <button id="closePopup" onclick="closePopup()">OK</button>
+        <button onclick="closePopup()">OK</button>
       </div>
     </div>
 
-    <div id="modeLabel">Study</div>
+    <div class="flex-column">
+      <button id="studyModeLabel" class="active" onclick="switchModeTo('study')">Study</button><button id="breakModeLabel" onclick="switchModeTo('break')">Break</button>
+    </div>
     <div class="container-timer-circle">
       <svg width="200" height="200">
         <circle
