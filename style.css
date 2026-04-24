@@ -20,6 +20,26 @@ main {
   justify-content: center;
 }
 
+/* HEADLINES - TITLES */
+h1, h2, h3 {
+  margin: 0 0 5px 0;
+}
+h1{
+  font-size: 3rem;
+}
+h2{
+  font-size: 2rem;
+}
+h3{
+  font-size: 1.5rem;
+}
+
+/* LINE */
+hr {
+  width: 100%;
+  border-color: var(--secondary-background-color);
+}
+
 /* BUTTONS */
 button {
   display: inline-flex;
@@ -72,7 +92,7 @@ button svg {
 }
 
 /* HEADER */
-.header {
+header {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -89,7 +109,6 @@ button svg {
   z-index: 99;
   top: 3rem;
   right: 0;
-  max-height: 0;
   opacity: 0;
   overflow: hidden;
   margin-top: 15px;
@@ -104,10 +123,31 @@ button svg {
   transition: 0.3s;
 }
 #settingsPanel.open {
-  max-height: 200px;
+  height: fit-content;
   opacity: 1;
   padding: 30px;
 }
+/* AUDIO SETTINGS */
+.audio-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--panel-bg); /* Use your existing theme colors */
+  padding: 10px;
+  border-radius: 8px;
+}
+#muteBtn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+#volumeSlider {
+  cursor: pointer;
+  accent-color: var(--primary-color);
+  width: 100px;
+}
+
 /* TIMER */
 #timerNumber {
   position: absolute;
@@ -172,4 +212,5 @@ button svg {
 /* HIDDEN STATE */
 .hidden {
   display: none;
+  pointer-events: none;
 }
