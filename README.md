@@ -1,5 +1,5 @@
 <h1>Simple Pomodoro Timer</h1>
-<hr/>
+
 <h2>Features</h2>
 - customizable intervals: set your own study and break durations,
 - progress visualization,
