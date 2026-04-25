@@ -11,4 +11,4 @@
 </ul> 
 
 <h2>Visualisation</h2>
-<img width="467" height="483" alt="obraz" src="https://github.com/user-attachments/assets/0872c187-19a5-448c-aab0-b1eafb00e921" />
+<img margin="auto" width="467" height="483" alt="obraz" src="https://github.com/user-attachments/assets/0872c187-19a5-448c-aab0-b1eafb00e921" />
