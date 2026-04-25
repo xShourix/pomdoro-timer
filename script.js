@@ -162,13 +162,29 @@ function resetTimer() {
 
 // settings functions
 function saveStudyTime() {
+  const validatedValue = validateAndGet(studyInput);
+  studyTime = validatedValue * 60;
   localStorage.setItem("studyTime", studyInput.value);
+  
+  if (mode === "study" && !interval) {
+    currentTime = studyTime;
+    totalTime = studyTime;
+    updateDisplay();
+  }
 }
 function saveBreakTime() {
-  localStorage.setItem("breakTime", breakInput.value);
+  const validatedValue = validateAndGet(breakInput);
+  breakTime = validatedValue * 60;
+  localStorage.setItem("breakTime", validatedValue);
+  
+  if (mode === "break" && !interval) {
+    currentTime = breakTime;
+    totalTime = breakTime;
+    updateDisplay();
+  }
 }
 function saveGoal() {
-  sessionGoal = goalInput.value;
+  sessionGoal = validateAndGet(goalInput);
   sessionGoalEl.textContent = sessionGoal;
   localStorage.setItem("sessionGoal", goalInput.value);
 }
@@ -198,6 +214,22 @@ function loadSettings() {
     updateVolume(savedVolume);
 
   updateDisplay();
+}
+
+// validation function for inputs
+function validateAndGet(inputEl) {
+  let val = parseInt(inputEl.value);
+  const min = parseInt(inputEl.min);
+  const max = parseInt(inputEl.max);
+
+  if (isNaN(val) || val < min) {
+    val = min;
+  } else if (val > max && !isNaN(max)) {
+    val = max;
+  }
+  
+  inputEl.value = val; // update input with validated value
+  return val;
 }
 
 // session handling
