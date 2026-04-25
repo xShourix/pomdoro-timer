@@ -96,6 +96,7 @@ function switchModeTo(modeName) {
 
   updateDisplay();
 }
+
 // timer functions
 function startTimer() {
   if (interval) return; // preventing multiple timers
@@ -222,6 +223,7 @@ function closePopup() {
   updateDisplay();
   popup.classList.add("hidden");
 }
+
 // settings panel toggle
 function toggleSettingsPanel() {
   if (settingsPanel.classList.contains("open")) {
@@ -245,7 +247,6 @@ function toggleMute() {
     lastVolume = alarmSound.volume;
     alarmSound.volume = 0;
     volumeSlider.value = 0;
-    updateVolumeIcon();
   } else {
     if(lastVolume>0) {
       alarmSound.volume = lastVolume || 0.5;
@@ -255,8 +256,8 @@ function toggleMute() {
       alarmSound.volume = 0.5;
       volumeSlider.value = 0.5;
     }
-    updateVolumeIcon();
   }
+  updateVolumeIcon();
   localStorage.setItem("volume", volumeSlider.value);
 }
 function updateVolumeIcon() {

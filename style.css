@@ -87,8 +87,8 @@ button svg {
   transition: 0.2s;
 }
 .inputNumberMinimal:focus {
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.3);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(201, 42, 134, 0.3);
 }
 
 /* HEADER */
@@ -132,15 +132,7 @@ header {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: var(--panel-bg); /* Use your existing theme colors */
-  padding: 10px;
-  border-radius: 8px;
-}
-#muteBtn {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
+  background: var(--panel-bg);
 }
 #volumeSlider {
   cursor: pointer;
